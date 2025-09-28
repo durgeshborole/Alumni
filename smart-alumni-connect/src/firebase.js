@@ -1,29 +1,21 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { getFirestore } from "firebase/firestore"; // Make sure this is imported
-
 import { getAuth } from "firebase/auth";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getFirestore } from "firebase/firestore";
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// Your web app's Firebase configuration, now read from environment variables.
+// Make sure to set these in your hosting provider (like Vercel).
 const firebaseConfig = {
-  apiKey: "AIzaSyDpmp7yYNkKHj8Dxx5VbLLWEH64YUEyr6g",
-  authDomain: "smart-alumni-connect.firebaseapp.com",
-  projectId: "smart-alumni-connect",
-  storageBucket: "smart-alumni-connect.firebasestorage.app",
-  messagingSenderId: "917980121266",
-  appId: "1:917980121266:web:8c3bf665a23ac2fe8361ab",
-  measurementId: "G-326ZFG4XD7"
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const auth = getAuth(app);
 
-// Export the auth instance to be used in other parts of your app
-export { auth };
-export const db = getFirestore(app); // Initialize and export Firestore
+// Initialize and export Firebase services to be used in other parts of the app
+export const auth = getAuth(app);
+export const db = getFirestore(app);
