@@ -135,7 +135,7 @@
 
 
 import React, { useState, useEffect } from 'react';
-import { auth, db } from '../firebase';
+import { auth, db } from './firebase';
 import { collection, getDocs, query, where, limit } from "firebase/firestore";
 
 // --- Helper Icon Components (viewBox attributes corrected) ---
